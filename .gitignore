@@ -1,0 +1,10 @@
+*.jpg
+*.txt
+*.otf
+*.json
+lib/*
+include/*
+bin/*
+__pycache__/*
+.Python
+.DS_Store
