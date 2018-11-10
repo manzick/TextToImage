@@ -30,9 +30,13 @@ def draw_to_image(texts, output_name):
     font = ImageFont.truetype(FONT_NAME, FONT_SIZE)
     image = Image.open(IMAGE_NAME)
 
+    global TOP_SPACE
+    top_space_local = TOP_SPACE
+    if len(texts) > 2:
+        top_space_local = TOP_SPACE - (len(texts) - 2) * 15
     line_number = 1
     for text in texts:
-        y_position = (TOP_SPACE - SPACE_SIZE) + line_number * SPACE_SIZE
+        y_position = (top_space_local - SPACE_SIZE) + line_number * SPACE_SIZE
         text_position = (LEFT_SPACE, y_position)
         text_color = (255, 255, 255)
 
@@ -41,7 +45,7 @@ def draw_to_image(texts, output_name):
         line_number = line_number + 1
 
     address = os.path.abspath(os.curdir)
-    image.save(address + '/output/' + output_name + '.jpg')
+    image.save(address + '/output/' + output_name + '.png')
 
 
 def get_lines(file_name):
